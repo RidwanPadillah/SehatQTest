@@ -12,7 +12,6 @@ RSpec.describe 'Book API', type: :request do
   # Test suite for POST /books
   describe 'POST /books' do
     
-
     context 'when request is valid' do
       let(:date_now) { (Time.now + 3600).strftime("%d/%m/%Y %H:%M") }
       let(:valid_attributes) do
@@ -55,11 +54,14 @@ RSpec.describe 'Book API', type: :request do
       let(:valid_attributes) do
         { date: date_now, doctor_id: doctor_id, hospital_id: hospital_id, user_id: user_id }
       end
+
       before { post '/books', params: valid_attributes, headers: headers }
 
       it 'returns status code 423' do
         expect(response).to have_http_status(423)
       end
     end
+
   end
+  
 end
